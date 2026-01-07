@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞华云数豆科技 2026年发展战略规划书</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        arctic: {
+                            bg: '#FFFFFF',
+                            primary: '#184272',
+                            secondary: '#39679B',
+                            accent: '#89A8C5',
+                            soft: '#BFD0D8',
+                            lightest: '#E3EDEE'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
+        .selection-style::selection {
+            background-color: #0f172a;
+            color: #ffffff;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+<body class="selection-style">
+    <div id="root"></div>
+
+    <script type="module">
+        import React from 'https://esm.sh/react@^19.2.3';
+        import ReactDOM from 'https://esm.sh/react-dom@^19.2.3/client';
+        import { 
+          ShieldCheck, BrainCircuit, Users, Settings, Rocket, Globe, Cpu, Zap, 
+          FileText, Briefcase, Search, MessageSquare, Wrench, Clock, ArrowRight, 
+          ChevronRight, Activity, Target, BarChart3, Layers 
+        } from 'https://esm.sh/lucide-react@^0.562.0';
+
+        // --- Components ---
+
+        const SectionTitle = ({ title, subtitle }) => (
+          React.createElement('div', { className: "mb-20" },
+            React.createElement('div', { className: "flex items-center gap-4 mb-2" },
+              React.createElement('div', { className: "h-1 w-12 bg-slate-900" }),
+              subtitle && React.createElement('span', { className: "text-slate-400 text-sm font-bold tracking-[0.3em] uppercase" }, subtitle)
+            ),
+            React.createElement('h2', { className: "text-4xl font-bold text-slate-900 tracking-tight" }, title)
+          )
+        );
+
+        const Card = ({ icon, title, children, className }) => (
+          React.createElement('div', { className: `p-10 rounded-sm bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 ${className}` },
+            React.createElement('div', { className: "flex items-start justify-between mb-8" },
+              React.createElement('div', { className: "text-slate-900" }, icon),
+              React.createElement('div', { className: "text-[10px] font-bold text-slate-300 tracking-widest uppercase" }, "Proprietary")
+            ),
+            React.createElement('h3', { className: "text-2xl font-bold text-slate-900 mb-6 tracking-tight" }, title),
+            React.createElement('div', { className: "text-slate-600 leading-relaxed text-[15px]" }, children)
+          )
+        );
+
+        const TimelineCard = ({ quarter, tag, title, items, side, icon }) => (
+          React.createElement('div', { className: `relative mb-24 flex flex-col md:flex-row items-stretch w-full group` },
+            React.createElement('div', { className: `w-full md:w-1/2 ${side === 'right' ? 'md:order-last md:pl-16' : 'md:pr-16 md:text-right'}` },
+              React.createElement('div', { className: "p-8 md:p-12 bg-white border border-slate-200 border-l-4 border-l-slate-900 shadow-sm transition-all duration-500" },
+                React.createElement('div', { className: "inline-block px-3 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold uppercase tracking-widest mb-6" }, `Phase ${quarter} / ${tag}`),
+                React.createElement('h4', { className: "text-2xl font-bold text-slate-900 mb-8 leading-tight" }, title),
+                React.createElement('div', { className: "space-y-6 text-[15px] text-slate-600 text-left" },
+                  items.map((item, idx) => {
+                    const [boldPart, ...rest] = item.split('：');
+                    return React.createElement('div', { key: idx, className: "flex items-start" },
+                      React.createElement('div', { className: "mt-2 mr-3 w-1.5 h-1.5 bg-slate-900 flex-shrink-0" }),
+                      React.createElement('p', { className: "leading-relaxed" },
+                        React.createElement('span', { className: "font-bold text-slate-900" }, boldPart),
+                        rest.length > 0 ? React.createElement('span', { className: "text-slate-600" }, `：${rest.join('：')}`) : ''
+                      )
+                    );
+                  })
+                )
+              )
+            ),
+            React.createElement('div', { className: "hidden md:flex absolute left-1/2 top-0 bottom-0 -translate-x-1/2 flex-col items-center z-10" },
+              React.createElement('div', { className: "w-12 h-12 bg-slate-900 text-white flex items-center justify-center font-bold text-lg shadow-xl" }, quarter),
+              React.createElement('div', { className: "w-px h-full bg-slate-200" })
+            ),
+            React.createElement('div', { className: "hidden md:block w-1/2" })
+          )
+        );
+
+        // --- Main App ---
+
+        const App = () => {
+          return (
+            React.createElement('div', { className: "min-h-screen bg-[#F8F9FA] font-sans text-slate-900 antialiased" },
+              React.createElement('div', { className: "fixed inset-0 pointer-events-none -z-10 overflow-hidden opacity-[0.03]" },
+                React.createElement('div', { className: "absolute inset-0", style: { backgroundImage: 'radial-gradient(#000 1px, transparent 0)', backgroundSize: '40px 40px' } })
+              ),
+              React.createElement('header', { className: "relative pt-32 pb-40 px-6 border-b border-slate-200 bg-white" },
+                React.createElement('div', { className: "max-w-6xl mx-auto" },
+                  React.createElement('div', { className: "inline-flex items-center px-3 py-1 border border-slate-900 text-slate-900 text-[10px] font-bold tracking-[0.4em] uppercase mb-12" }, "Internal Strategy Document"),
+                  React.createElement('div', { className: "grid lg:grid-cols-12 gap-16 items-start" },
+                    React.createElement('div', { className: "lg:col-span-8" },
+                      React.createElement('h1', { className: "text-6xl md:text-8xl font-bold text-slate-900 mb-10 tracking-tighter leading-[0.95]" }, 
+                        "瑞华云数豆科技 ", React.createElement('br'), 
+                        React.createElement('span', { className: "text-[#39679B]" }, "2026年发展战略规划书")
+                      ),
+                      React.createElement('p', { className: "text-2xl text-slate-500 font-light leading-relaxed max-w-2xl border-l-2 border-slate-200 pl-8" }, "构建“基础设施+智慧大脑+交互服务+敏捷工具”四维合规生态")
+                    ),
+                    React.createElement('div', { className: "lg:col-span-4 p-8 border border-slate-200 rounded-sm" },
+                      React.createElement('div', { className: "space-y-6" },
+                        React.createElement('div', { className: "flex items-center justify-between border-b border-slate-100 pb-4" },
+                          React.createElement('span', { className: "text-[10px] uppercase font-bold text-slate-400 tracking-widest" }, "制定人"),
+                          React.createElement('span', { className: "text-sm font-bold text-slate-900" }, "施奕勇")
+                        ),
+                        React.createElement('div', { className: "flex items-center justify-between border-b border-slate-100 pb-4" },
+                          React.createElement('span', { className: "text-[10px] uppercase font-bold text-slate-400 tracking-widest" }, "发布日期"),
+                          React.createElement('span', { className: "text-sm font-bold text-slate-900" }, "2026年1月")
+                        ),
+                        React.createElement('div', { className: "flex items-center justify-between" },
+                          React.createElement('span', { className: "text-[10px] uppercase font-bold text-slate-400 tracking-widest" }, "保密级别"),
+                          React.createElement('span', { className: "text-sm font-bold text-slate-900" }, "Confidential")
+                        )
+                      )
+                    )
+                  ),
+                  React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-3 gap-12 mt-32" },
+                    React.createElement('div', { className: "p-10 bg-slate-50 border-l-2 border-slate-900" },
+                      React.createElement('div', { className: "text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-4" }, "Vision"),
+                      React.createElement('p', { className: "text-xl font-bold text-slate-900 leading-tight" }, "助力中国企业出海更轻、更快、更稳。")
+                    ),
+                    React.createElement('div', { className: "p-10 bg-slate-50 border-l-2 border-slate-900" },
+                      React.createElement('div', { className: "text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-4" }, "Philosophy"),
+                      React.createElement('p', { className: "text-xl font-bold text-slate-900 leading-tight" }, "全面 AI 化 (AI-Native) + Vibe Coding (极速生产)。")
+                    ),
+                    React.createElement('div', { className: "p-10 bg-slate-50 border-l-2 border-slate-900" },
+                      React.createElement('div', { className: "text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-4" }, "Positioning"),
+                      React.createElement('p', { className: "text-xl font-bold text-slate-900 leading-tight" }, "国内领先财务 AI 科技公司，提供一站式全球财税合规数智化平台。")
+                    )
+                  )
+                )
+              ),
+              React.createElement('main', { className: "max-w-6xl mx-auto px-6 py-32 space-y-48" },
+                React.createElement('section', { id: "product" },
+                  React.createElement(SectionTitle, { title: "一、 产品路线：四层架构协同进化", subtitle: "The Quad-Core Product Matrix" }),
+                  React.createElement('div', { className: "mb-20" },
+                    React.createElement('p', { className: "text-2xl text-slate-600 leading-relaxed font-light" }, "我们将产品战略重构为 “基础设施 (Body) + 智慧大脑 (Brain) + 交互服务 (Interface) + 敏捷工具 (Tools)” 的四维有机架构。前三者构成核心护城护，第四层作为生态触手。")
+                  ),
+                  React.createElement('div', { className: "grid grid-cols-1 lg:grid-cols-2 gap-12" },
+                    React.createElement(Card, { icon: React.createElement(Cpu, { size: 32 }), title: "1. 基础设施层 (Infrastructure)" },
+                      React.createElement('p', { className: "font-bold text-slate-900 mb-6 text-lg border-b border-slate-100 pb-2" }, "出海企业财税合规数智化平台"),
+                      React.createElement('ul', { className: "space-y-6" },
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "定位"), " ：企业的“数字躯干”，承载全球业务流与数据流。")),
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "核心底座"), " ： Deep Odoo 19 + AI Core 。基于 Odoo 19 内核进行深度改造，不仅是ERP，更是全球化合规的容器。")),
+                        React.createElement('li', { className: "pt-4" }, 
+                          React.createElement('div', { className: "text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6" }, "关键模块"),
+                          React.createElement('div', { className: "space-y-4" },
+                            React.createElement('div', { className: "p-6 bg-slate-50 border border-slate-100" }, React.createElement('strong', null, "○ 全球化合规引擎"), " ：预置 100+ 国家（重点覆盖一带一路、拉美、东南亚）的税务逻辑（VAT/GST/Sales Tax）。支持 CAS/IFRS 多准则实时并行与自动对账。"),
+                            React.createElement('div', { className: "p-6 bg-slate-50 border border-slate-100" }, React.createElement('strong', null, "○ AI 驱动智能财务"), " ：集成 OCR 与 LLM，实现“发票即凭证”。从采购到付款全流程自动化（RPA），目标是将去人工化记账率提升至 80% 以上 。"),
+                            React.createElement('div', { className: "p-6 bg-slate-50 border border-slate-100" }, React.createElement('strong', null, "○ 海外综合服务平台"), " ：灵活配置，支持集团级报表合并与穿透式审计，解决跨境资金流结算与避险预警。")
+                          )
+                        )
+                      )
+                    ),
+                    React.createElement(Card, { icon: React.createElement(BrainCircuit, { size: 32 }), title: "2. 智慧大脑层 (Smart Brain)" },
+                      React.createElement('p', { className: "font-bold text-slate-900 mb-6 text-lg border-b border-slate-100 pb-2" }, "全球财税知识库"),
+                      React.createElement('ul', { className: "space-y-6" },
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "定位"), " ：企业的“超级大脑”，确立专业壁垒与推理能力。")),
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "技术核心"), " ： ", React.createElement('strong', null, "GraphRAG (图谱增强检索)"), " 。超越简单的文档检索，利用“向量+图谱”技术识别法规间的隐性冲突，精准定位双边税收协定 (DTAAs) 的优先权。")),
+                        React.createElement('li', { className: "pt-4" },
+                          React.createElement('div', { className: "text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4" }, "数据体系 (三层级)"),
+                          React.createElement('div', { className: "flex gap-4 mb-8" }, ['L1 法定法规', 'L2 双边协定', 'L3 行业实务'].map(level => React.createElement('span', { key: level, className: "text-xs font-bold px-3 py-1 bg-slate-900 text-white" }, level))),
+                          React.createElement('div', { className: "text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4" }, "安全机制"),
+                          React.createElement('div', { className: "p-6 bg-slate-900 text-slate-300" }, React.createElement('strong', null, "○ PII 隐私脱敏引擎"), " ：在数据进入大模型前，自动识别并隔离人名、账号等敏感信息，确保原始合规数据“可用不可见”，安全不出境。")
+                        )
+                      )
+                    ),
+                    React.createElement(Card, { icon: React.createElement(MessageSquare, { size: 32 }), title: "3. 交互服务层 (Interactive Service)" },
+                      React.createElement('p', { className: "font-bold text-slate-900 mb-6 text-lg border-b border-slate-100 pb-2" }, "瑞华云营销合规智能体 (Digital Partner)"),
+                      React.createElement('ul', { className: "space-y-6" },
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "定位"), " ：企业的“有温度的数字合伙人”，连接大客户与底座的深度智能界面。")),
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "核心产品"), " ： ", React.createElement('strong', null, "Ruihua Digital Consultant ( 瑞华云营销合规智能体 )"), " 。")),
+                        React.createElement('li', { className: "grid grid-cols-1 md:grid-cols-2 gap-6 pt-4" },
+                          React.createElement('div', { className: "p-6 border border-slate-200 bg-white shadow-sm" }, 
+                            React.createElement('div', { className: "text-[10px] font-bold text-slate-400 mb-2 uppercase" }, "Cognitive Core"),
+                            React.createElement('div', { className: "font-bold text-slate-900 mb-2" }, "认知内核 (IQ)"),
+                            React.createElement('p', { className: "text-xs text-slate-500" }, "基于 GraphRAG，提供经得起 IPO 审计级的专业建议，杜绝“幻觉”。")
+                          ),
+                          React.createElement('div', { className: "p-6 border border-slate-200 bg-slate-900 text-white shadow-sm" }, 
+                            React.createElement('div', { className: "text-[10px] font-bold text-slate-500 mb-2 uppercase" }, "Empathy Core"),
+                            React.createElement('div', { className: "font-bold text-white mb-2" }, "情感内核 (EQ)"),
+                            React.createElement('p', { className: "text-xs text-slate-400" }, "复刻资深合伙人人格。识别客户控制权焦虑与合规恐慌。")
+                          )
+                        ),
+                        React.createElement('li', { className: "pt-4" },
+                          React.createElement('div', { className: "text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4" }, "关键能力"),
+                          React.createElement('div', { className: "space-y-4 text-sm" },
+                            React.createElement('p', { className: "pb-3 border-b border-slate-100" }, "○ ", React.createElement('strong', null, "SPIN 销售/咨询逻辑"), " ：通过 S-P-I-N (情境-问题-暗示-需求) 方法论，主动引导客户发现合规风险。"),
+                            React.createElement('p', { className: "pb-3 border-b border-slate-100" }, "○ ", React.createElement('strong', null, "多模态交互"), " ：支持语音识别 (ASR) 和企业微信 (WeCom) 侧边栏运行，实现人机协同销售。"),
+                            React.createElement('p', { className: "pb-3" }, "○ ", React.createElement('strong', null, "主动合规前哨"), " ：根据海外政策异动，主动推送个性化缓解方案。")
+                          )
+                        )
+                      )
+                    ),
+                    React.createElement(Card, { icon: React.createElement(Settings, { size: 32 }), title: "4. 敏捷工具箱 (Agile Toolbox)" },
+                      React.createElement('p', { className: "font-bold text-slate-900 mb-6 text-lg border-b border-slate-100 pb-2" }, "卫星产品矩阵"),
+                      React.createElement('ul', { className: "space-y-6" },
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "定位"), " ：公司的“触手”，解决单点痛点，低成本获客，支持独立 SaaS 售卖。")),
+                        React.createElement('li', { className: "flex gap-4" }, React.createElement('div', { className: "w-1 h-1 bg-slate-900 mt-2.5 flex-shrink-0" }), React.createElement('p', null, React.createElement('strong', null, "策略"), " ： “可插拔、可独立” 。既能无缝集成到底座，也能作为流量入口。")),
+                        React.createElement('li', { className: "pt-4" },
+                          React.createElement('div', { className: "text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6" }, "核心组件举例"),
+                          React.createElement('div', { className: "space-y-4" },
+                            React.createElement('div', { className: "flex items-start gap-4 p-4 border border-slate-100" }, React.createElement(Wrench, { size: 18, className: "mt-1 text-slate-900" }), React.createElement('p', { className: "text-sm" }, React.createElement('strong', null, "Docu-AI 票据解析Agent"), " ：攻克东南亚/拉美非标票据识别难题。")),
+                            React.createElement('div', { className: "flex items-start gap-4 p-4 border border-slate-100" }, React.createElement(ShieldCheck, { size: 18, className: "mt-1 text-slate-900" }), React.createElement('p', { className: "text-sm" }, React.createElement('strong', null, "Risk-Scanner 合规扫描哨兵"), " ：自动对照知识库扫描潜在风险。")),
+                            React.createElement('div', { className: "flex items-start gap-4 p-4 border border-slate-100" }, React.createElement(Activity, { size: 18, className: "mt-1 text-slate-900" }), React.createElement('p', { className: "text-sm" }, React.createElement('strong', null, "Auto-Filing 一键申报器"), " ：针对 API 成熟国家的自动化申报。"))
+                          )
+                        )
+                      )
+                    )
+                  )
+                ),
+                React.createElement('section', { id: "tech" },
+                  React.createElement(SectionTitle, { title: "二、 技术路线：Vibe Coding 与 GraphRAG 双轮驱动" }),
+                  React.createElement('div', { className: "space-y-24" },
+                    React.createElement('div', { className: "p-12 md:p-16 bg-white border border-slate-200" },
+                      React.createElement('div', { className: "flex flex-col md:flex-row gap-12 items-start" },
+                        React.createElement('div', { className: "w-20 h-20 bg-slate-900 text-white flex items-center justify-center flex-shrink-0" }, React.createElement(Zap, { size: 40 })),
+                        React.createElement('div', null,
+                          React.createElement('h3', { className: "text-3xl font-bold text-slate-900 mb-6" }, "1. 研发模式变革：全面拥抱 Vibe Coding (AI-First)"),
+                          React.createElement('p', { className: "text-xl text-slate-500 mb-12 max-w-4xl font-light" }, "构建以 “意图（Intent）到产品（Product）的转化速度” 为唯一核心指标的极速研发体系。"),
+                          React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-slate-100 pt-12" },
+                            React.createElement('div', null, React.createElement('h4', { className: "font-bold text-slate-900 mb-4" }, "核心理念"), React.createElement('p', { className: "text-sm text-slate-500" }, "开发者转变为建筑师与验收官，使用 Cursor 等 AI 原生工具链。")),
+                            React.createElement('div', null, React.createElement('h4', { className: "font-bold text-slate-900 mb-4" }, "战略价值"), React.createElement('p', { className: "text-sm text-slate-500" }, "MVP 验证周期缩短至 2 天，10 倍速推进行业落地。")),
+                            React.createElement('div', null, React.createElement('h4', { className: "font-bold text-slate-900 mb-4" }, "实施路线"), React.createElement('p', { className: "text-sm text-slate-500" }, "6个月内完成研发全链路转型。"))
+                          )
+                        )
+                      )
+                    )
+                  )
+                ),
+                React.createElement('section', { id: "schedule" },
+                  React.createElement(SectionTitle, { title: "四、 2026年实施时间计划表" }),
+                  React.createElement('div', { className: "relative max-w-5xl mx-auto pt-20" },
+                    React.createElement(TimelineCard, { quarter: "Q1", tag: "筑基期", title: "Foundation & Pilot —— 平台上线与单点突破", side: "left", items: ["1. Odoo 19 基础版验证", "2. 新加坡 RAG 知识库 (MVP)", "3. 精英招募"] }),
+                    React.createElement(TimelineCard, { quarter: "Q2", tag: "验证期", title: "Validation & Expansion —— 多国复制与智能体雏形", side: "right", items: ["1. 平台优化与试点", "2. 多国知识库复制", "3. 智能体 v0.1 (Alpha)"] }),
+                    React.createElement(TimelineCard, { quarter: "Q3", tag: "智能化期", title: "Intelligence & Empathy —— 自动化跃迁与情感注入", side: "left", items: ["1. 自动化跃迁", "2. 新加坡本地化验证", "3. 情感智能体 (Beta)"] }),
+                    React.createElement(TimelineCard, { quarter: "Q4", tag: "爆发期", title: "Integration & Ecosystem —— 全面融合与生态变现", side: "right", items: ["1. AI 能力全面集成", "2. 情感营销智能体正式发布", "3. 敏捷工具箱发布"] })
+                  )
+                ),
+                React.createElement('section', { id: "summary", className: "relative pt-32 border-t border-slate-200" },
+                  React.createElement('div', { className: "max-w-4xl mx-auto" },
+                    React.createElement('h2', { className: "text-4xl font-bold text-slate-900 mb-16 tracking-tight" }, "五、 总结"),
+                    React.createElement('div', { className: "p-12 md:p-20 bg-slate-900 text-white shadow-2xl" },
+                      React.createElement('div', { className: "mb-10 text-slate-500 font-bold uppercase tracking-widest text-[10px]" }, "Strategic Conclusion"),
+                      React.createElement('p', { className: "text-2xl md:text-3xl text-white font-bold leading-tight mb-12" }, "2026年，瑞华云数豆科技将重塑出海财税服务标准。"),
+                      React.createElement('div', { className: "h-px w-full bg-slate-800 mb-12" }),
+                      React.createElement('div', { className: "text-slate-300 font-bold text-2xl italic leading-relaxed" }, "我们的目标是：让每一个出海企业，都拥有以为“24小时在线、不仅懂合规、更懂你”的数字首席财务官。")
+                    )
+                  )
+                )
+              ),
+              React.createElement('footer', { className: "bg-white border-t border-slate-200 py-32 px-6" },
+                React.createElement('div', { className: "max-w-6xl mx-auto" },
+                  React.createElement('div', { className: "flex items-center space-x-3 mb-8" },
+                    React.createElement('div', { className: "bg-slate-900 p-2 text-white font-black text-xl" }, "R"),
+                    React.createElement('div', { className: "text-2xl font-bold tracking-tighter" }, "瑞华云数豆科技")
+                  ),
+                  React.createElement('p', { className: "text-slate-400 max-w-sm text-sm font-medium mb-12" }, "引领全球财税合规的数字化革命。"),
+                  React.createElement('div', { className: "flex flex-col md:flex-row justify-between items-center pt-10 border-t border-slate-100 gap-6" },
+                    React.createElement('div', { className: "text-slate-400 text-[10px] font-bold uppercase tracking-widest" }, "© 2026 Ruihua Cloud Shudou Tech. Internal Use Only."),
+                    React.createElement('div', { className: "flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-400" },
+                      React.createElement('a', { href: "#" }, "Privacy"), React.createElement('a', { href: "#" }, "Compliance"), React.createElement('a', { href: "#" }, "Security")
+                    )
+                  )
+                )
+              ),
+              React.createElement('div', { className: "fixed bottom-12 right-12 z-50" },
+                React.createElement('button', { 
+                  onClick: () => window.scrollTo({top: 0, behavior: 'smooth'}),
+                  className: "w-16 h-16 bg-slate-900 text-white flex items-center justify-center shadow-2xl hover:bg-slate-700 transition-all"
+                }, React.createElement(ArrowRight, { size: 20, className: "-rotate-90" }))
+              )
+            )
+          );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(React.StrictMode, null, React.createElement(App)));
+    </script>
+</body>
+</html>
